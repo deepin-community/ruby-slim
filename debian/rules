@@ -1,0 +1,17 @@
+#!/usr/bin/make -f
+
+export GEM2DEB_TEST_RUNNER = --check-dependencies
+export DH_RUBY = --gem-install
+export DH_RUBY_GEM_INSTALL_BLACKLIST_APPEND=doc/* benchmarks/* bin/slimrb
+
+%:
+	dh $@ --buildsystem=ruby --with ruby
+
+override_dh_installchangelogs:
+	dh_installchangelogs CHANGES -O--buildsystem=ruby
+
+override_dh_installexamples:
+	dh_installexamples -O--buildsystem=ruby
+	mkdir -p debian/ruby-slim/usr/share/doc/ruby-slim/examples
+	mv debian/ruby-slim/usr/bin/slimrb debian/ruby-slim/usr/share/doc/ruby-slim/examples
+	rmdir --ignore-fail-on-non-empty -p debian/ruby-slim/usr/bin

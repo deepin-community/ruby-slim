@@ -1,0 +1,23 @@
+From: Hideki Yamane <henrich@debian.org>
+Date: Sun, 30 Dec 2018 15:20:40 +0900
+Subject: don't use git
+
+---
+ slim.gemspec | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/slim.gemspec b/slim.gemspec
+index 0bbc7ae..d34aae5 100644
+--- a/slim.gemspec
++++ b/slim.gemspec
+@@ -13,8 +13,8 @@ Gem::Specification.new do |s|
+   s.homepage          = 'http://slim-lang.com/'
+   s.license           = 'MIT'
+ 
+-  s.files             = `git ls-files`.split("\n")
+-  s.executables       = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
++  s.files             = Dir['**/*'].reject { |f| f =~ %r{^debian/} }
++  s.executables       = Dir['bin/*'].map{ |f| File.basename(f) }
+   s.require_paths     = %w(lib)
+ 
+   s.required_ruby_version = '>=2.0.0'

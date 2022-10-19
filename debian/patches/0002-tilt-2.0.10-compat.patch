@@ -1,0 +1,44 @@
+From: Joseph Herlant <aerostitch@debian.org>
+Date: Mon, 20 Apr 2020 01:40:06 +0200
+Subject: Fix compatibility with tilt 2.0.10
+
+Forwarded: https://github.com/slim-template/slim/pull/836
+Last-Update: 2019-12-15
+
+Fix the tests when using methods in templates to force the parent to be Tilt::CompiledTemplates
+Last-Update: 2019-12-15
+---
+ test/literate/TESTS.md | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/test/literate/TESTS.md b/test/literate/TESTS.md
+index bbcbffe..84a9f37 100644
+--- a/test/literate/TESTS.md
++++ b/test/literate/TESTS.md
+@@ -368,7 +368,7 @@ You don't need the explicit `\` if the line ends with a comma `,`.
+ 
+ ~~~ slim
+ ruby:
+-  def test(*args)
++  def self.test(*args)
+     args.join('-')
+   end
+ = test('arg1',
+@@ -961,7 +961,7 @@ You don't need the explicit `\` if the line ends with a comma `,`.
+ 
+ ~~~ slim
+ ruby:
+-  def test(*args)
++  def self.test(*args)
+     args.join('-')
+   end
+ a href=test('arg1',
+@@ -1073,7 +1073,7 @@ with the :tag key.
+ 
+ ~~~ slim
+ ruby:
+-  def a_unless_current
++  def self.a_unless_current
+     @page_current ? {tag: 'span'} : {tag: 'a', href: 'http://slim-lang.com/'}
+   end
+ - @page_current = true

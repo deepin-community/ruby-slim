@@ -1,0 +1,48 @@
+Source: ruby-slim
+Section: ruby
+Priority: optional
+Maintainer: Debian Ruby Extras Maintainers <pkg-ruby-extras-maintainers@lists.alioth.debian.org>
+Uploaders: Eugene Lavnikevich <e.lavnikevich@sam-solutions.net>,
+           Jérémy Bobbio <lunar@debian.org>
+Build-Depends: asciidoctor,
+               debhelper-compat (= 12),
+               gem2deb,
+               rake (>= 0.8.7),
+               ruby-builder,
+               ruby-creole,
+               ruby-kramdown,
+               ruby-minitest,
+               ruby-org,
+               ruby-sass (>= 3.1.0),
+               ruby-temple (>= 0.7.6), ruby-temple (<< 0.9),
+               ruby-tilt (>= 2.0.6), ruby-tilt (<< 2.1),
+Standards-Version: 4.5.0
+Vcs-Git: https://salsa.debian.org/ruby-team/ruby-slim.git
+Vcs-Browser: https://salsa.debian.org/ruby-team/ruby-slim
+Homepage: http://slim-lang.com/
+Testsuite: autopkgtest-pkg-ruby
+XS-Ruby-Versions: all
+Rules-Requires-Root: no
+
+Package: ruby-slim
+Architecture: all
+XB-Ruby-Versions: ${ruby:Versions}
+Depends: ruby (>= 2.0),
+         ruby-temple (>= 0.7.6), ruby-temple (<< 0.9),
+         ruby-tilt (>= 2.0.6), ruby-tilt (<< 2.1),
+         ${misc:Depends},
+         ${shlibs:Depends}
+Description: powerful (X)HTML templating engine with an elegant syntax
+ Slim is a template language whose goal is to reduce the view syntax to the
+ essential parts without becoming cryptic.
+ .
+ A short list of the features:
+  - elegant syntax: short syntax without closing tags, HTML style mode with
+    closing tags and configurable shortcut tags
+  - automatic HTML escaping and support for Rails' `html_safe?`
+  - highly configurable and extendable via plugins: logic less mode similar
+    to Mustache and translator/I18n support among others.
+  - high performance: comparable speed to ERB and streaming support in Rails
+  - supported by all major frameworks (Rails, Sinatra, ...)
+  - full Unicode support for tags and attributes on Ruby 1.9
+  - embedded engines like Markdown and Textile
